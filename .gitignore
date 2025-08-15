@@ -6,7 +6,8 @@ target/
 
 .m2repo
 .mvn
-
+mvnw.cmd
+mvnw
 
 ### STS ###
 .apt_generated

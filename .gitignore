@@ -4,10 +4,15 @@ target/
 !**/src/main/**/target/
 !**/src/test/**/target/
 
+### maven ###
 .m2repo
 .mvn
 mvnw.cmd
 mvnw
+
+### QucickfixJ ###
+logs        # Directory to store log files
+store     # Directory to store message store
 
 ### STS ###
 .apt_generated
@@ -23,16 +28,3 @@ mvnw
 *.iws
 *.iml
 *.ipr
-
-### NetBeans ###
-/nbproject/private/
-/nbbuild/
-/dist/
-/nbdist/
-/.nb-gradle/
-build/
-!**/src/main/**/build/
-!**/src/test/**/build/
-
-### VS Code ###
-.vscode/

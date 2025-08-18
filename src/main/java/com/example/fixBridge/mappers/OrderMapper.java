@@ -17,13 +17,13 @@ public class OrderMapper {
 
         NewOrderSingle order = new NewOrderSingle(
                 new ClOrdID(clOrdId),
-                mapSide(request.getSide()),
+                mapSide(request.side()),
                 new TransactTime(LocalDateTime.now()),
-                mapOrdType(request.getType())
+                mapOrdType(request.type())
         );
 
-        order.set(new Symbol(request.getSymbol()));
-        order.set(new OrderQty(request.getQty()));
+        order.set(new Symbol(request.symbol()));
+        order.set(new OrderQty(request.qty()));
 
         return order;
     }

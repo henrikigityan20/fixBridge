@@ -1,11 +1,9 @@
-package com.example.fixBridge;
+package com.example.fixBridge.services;
 
 import com.example.fixBridge.models.enums.CustomOrdType;
 import com.example.fixBridge.models.enums.CustomSide;
 import com.example.fixBridge.models.FixOrderResult;
 import com.example.fixBridge.models.OrderRequest;
-import com.example.fixBridge.services.FixOrderService;
-import com.example.fixBridge.services.SessionFactory;
 import org.junit.jupiter.api.*;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
@@ -31,7 +29,6 @@ class FixOrderServiceUnitTest {
     @BeforeEach
     void setUp() {
         MockitoAnnotations.openMocks(this);
-        // mock static method Session.sendToTarget
         mockedSession = mockStatic(Session.class);
     }
 
@@ -41,13 +38,12 @@ class FixOrderServiceUnitTest {
     }
 
     @Test
-    void testSendFixOrder_Success() throws Exception {
+    void testSendFixOrder_Success() {
         OrderRequest request = new OrderRequest("TSLA", 1, CustomSide.BUY, CustomOrdType.MARKET, false);
         SessionID mockSession = new SessionID("FIX.4.4", "TD_Manish_FIX", "CENTROID_SOL");
 
         when(sessionFactory.getTradingSession()).thenReturn(mockSession);
 
-        // mock static call to return true
         mockedSession.when(() -> Session.sendToTarget(any(), eq(mockSession)))
             .thenReturn(true);
 
@@ -62,13 +58,12 @@ class FixOrderServiceUnitTest {
     }
 
     @Test
-    void testSendFixOrder_Failure() throws Exception {
+    void testSendFixOrder_Failure() {
         OrderRequest request = new OrderRequest("TSLA", 1, CustomSide.BUY, CustomOrdType.MARKET, false);
         SessionID mockSession = new SessionID("FIX.4.4", "TD_Manish_FIX", "CENTROID_SOL");
 
         when(sessionFactory.getTradingSession()).thenReturn(mockSession);
 
-        // mock static call to throw exception
         mockedSession.when(() -> Session.sendToTarget(any(), eq(mockSession)))
             .thenThrow(new RuntimeException("FIX send failed"));
 

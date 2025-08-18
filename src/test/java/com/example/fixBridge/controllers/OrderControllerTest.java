@@ -1,6 +1,5 @@
-package com.example.fixBridge;
+package com.example.fixBridge.controllers;
 
-import com.example.fixBridge.controllers.OrderController;
 import com.example.fixBridge.models.FixOrderResult;
 import com.example.fixBridge.services.FixOrderService;
 import org.junit.jupiter.api.Test;
@@ -26,11 +25,9 @@ class OrderControllerTest {
 
     @Test
     void testPlaceOrder_Success() throws Exception {
-        // Arrange: mock FixOrderService
         FixOrderResult mockResult = new FixOrderResult(true, "TD_Manish_FIX", "12345", null);
         Mockito.when(fixOrderService.sendFixOrder(any())).thenReturn(mockResult);
 
-        // Act & Assert
         mockMvc.perform(post("/api/orders")
                         .contentType(MediaType.APPLICATION_JSON)
                         .content("""
@@ -51,11 +48,9 @@ class OrderControllerTest {
 
     @Test
     void testPlaceOrder_Failure() throws Exception {
-        // Arrange: mock FixOrderService returning failure
         FixOrderResult mockResult = new FixOrderResult(false, null, null, "Invalid order");
         Mockito.when(fixOrderService.sendFixOrder(any())).thenReturn(mockResult);
 
-        // Act & Assert
         mockMvc.perform(post("/api/orders")
                         .contentType(MediaType.APPLICATION_JSON)
                         .content("""

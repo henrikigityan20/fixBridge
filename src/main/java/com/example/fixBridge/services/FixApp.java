@@ -20,7 +20,7 @@ public class FixApp implements Application {
 
     @Override
     public void onCreate(SessionID sessionId) {
-        log.info(">> onCreate for session: {}", sessionId);
+        log.info("onCreate for session: {}", sessionId);
         Session session = Session.lookupSession(sessionId);
         if (session != null) {
             sessions.put(sessionId, session);
@@ -37,7 +37,7 @@ public class FixApp implements Application {
 
     @Override
     public void onLogout(SessionID sessionId) {
-        log.info(">> onLogout for session: {}", sessionId);
+        log.info("onLogout for session: {}", sessionId);
         sessions.remove(sessionId);
     }
 

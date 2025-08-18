@@ -1,7 +1,6 @@
-package com.example.fixBridge;
+package com.example.fixBridge.services;
 
 import com.example.fixBridge.models.enums.SessionType;
-import com.example.fixBridge.services.SessionFactory;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import quickfix.ConfigError;

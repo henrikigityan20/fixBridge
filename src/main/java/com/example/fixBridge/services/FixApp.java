@@ -64,12 +64,12 @@ public class FixApp implements Application {
     }
 
     @Override
-    public void toApp(Message message, SessionID sessionId) throws DoNotSend {
+    public void toApp(Message message, SessionID sessionId) {
         log.info("Sending message to {}: {}", sessionId, message);
     }
 
     @Override
-    public void fromApp(Message message, SessionID sessionId) throws FieldNotFound, IncorrectDataFormat, IncorrectTagValue, UnsupportedMessageType {
+    public void fromApp(Message message, SessionID sessionId) throws FieldNotFound {
         log.info("fromApp received message type {}: {}", message.getHeader().getString(MsgType.FIELD), message);
     }
 }

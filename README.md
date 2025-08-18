@@ -6,6 +6,4 @@ In application properties write quickfix file from resources under config quickf
 
 Make sure you have configured maven so that you can run program
 
-
-
-
+"symbol": "TSLA" was not valid one in lmax broker but with other existing ones like "ETH/USD" it worked fine. 
